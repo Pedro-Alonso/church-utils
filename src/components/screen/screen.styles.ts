@@ -7,6 +7,18 @@ export const Container = styled.div`
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background-color: ${colors.darkest};
+  background: #0f2027; 
+  background: -webkit-linear-gradient(
+    150deg,
+    #2c5364,
+    ${colors.darkest},
+    #0f2027
+  );
+  background: linear-gradient(
+    150deg,
+    #2c5364,
+    ${colors.darkest},
+    #0f2027
+  );
   color: white;
 `;
