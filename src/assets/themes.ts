@@ -4,3 +4,19 @@ export const colors = {
   lightest: "#F9F7F7",
   darkest: "#112D4E",
 };
+
+export const fonts = {
+  family: {
+    primary: "Roboto, sans-serif",
+    secondary: "Montserrat, sans-serif",
+  },
+  size: {
+    xs: "0.5rem",
+    s: "0.75rem",
+    m: "1rem",
+    l: "1.25rem",
+    xl: "1.5rem",
+    xxl: "2rem",
+    xxxl: "3rem",
+  },
+};
