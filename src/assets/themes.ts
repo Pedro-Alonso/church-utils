@@ -1,11 +1,11 @@
-export const colors = {
+const colors = {
   primary: "#3F72AF",
   secondary: "#DBE2EF",
   lightest: "#F9F7F7",
   darkest: "#112D4E",
 };
 
-export const fonts = {
+const fonts = {
   family: {
     primary: "Roboto, sans-serif",
     secondary: "Montserrat, sans-serif",
@@ -19,4 +19,9 @@ export const fonts = {
     xxl: "2rem",
     xxxl: "3rem",
   },
+};
+
+export const themes = {
+  colors,
+  fonts,
 };

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { fonts } from "../../assets/themes";
+import styled from 'styled-components';
+import { themes } from '../../assets/themes';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -19,13 +19,13 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: ${fonts.size.xxxl};
+  font-size: ${themes.fonts.size.xxxl};
 `;
 
 export const Subtitle = styled.h2`
-  font-size: ${fonts.size.l};
+  font-size: ${themes.fonts.size.l};
 `;
 
 export const Caption = styled.p`
-  font-size: ${fonts.size.m};
+  font-size: ${themes.fonts.size.m};
 `;

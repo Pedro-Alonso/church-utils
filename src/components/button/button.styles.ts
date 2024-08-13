@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { ButtonVariants } from "./types";
-import { colors } from "../../assets/themes";
+import { themes } from "../../assets/themes";
 
 export const Container = styled.button<{ type: ButtonVariants }>`
   width: 10rem;
   height: 3rem;
-  border-radius: 5rem;
+  border-radius: 5rem;	
   background-color: ${({ type }) =>
-    type === ButtonVariants.PRIMARY ? colors.primary : "none"};
+    type === ButtonVariants.PRIMARY ? themes.colors.primary : "none"};
   border: ${({ type }) =>
     type === ButtonVariants.PRIMARY ? "none" : "1px solid black"};
 
@@ -18,7 +18,7 @@ export const Container = styled.button<{ type: ButtonVariants }>`
 
   &:active {
     background-color: ${({ type }) =>
-      type === ButtonVariants.PRIMARY ? colors.primary : "gray"};
+      type === ButtonVariants.PRIMARY ? themes.colors.primary : "gray"};
   }
 
   &:focus {

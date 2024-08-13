@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "../../assets/themes";
+import { themes } from "../../assets/themes";
 
 export const Container = styled.div`
   display: flex;
@@ -12,13 +12,13 @@ export const Container = styled.div`
   background: -webkit-linear-gradient(
     150deg,
     #2c5364,
-    ${colors.darkest},
+    ${themes.colors.darkest},
     #0f2027
   );
   background: linear-gradient(
     150deg,
     #2c5364,
-    ${colors.darkest},
+    ${themes.colors.darkest},
     #0f2027
   );
   color: white;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "../../assets/themes";
+import { themes } from "../../assets/themes";
 
 export const Container = styled.div`
   width: 20rem;
@@ -10,7 +10,7 @@ export const InputField = styled.textarea`
   resize: none;
   width: 100%;
   height: 100%;
-  background-color: ${colors.lightest};
+  background-color: ${themes.colors.lightest};
   border: none;
   padding: 1rem;
   overflow-y: scroll;
