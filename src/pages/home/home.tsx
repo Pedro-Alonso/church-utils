@@ -8,6 +8,7 @@ export const Home = () => {
     <Screen>
       <MainMenu>
         <MenuOption text="Formatar Letra" redirectTo={SCREENS.FORMAT_LYRICS} />
+        <MenuOption text="Buscar Letra" redirectTo={SCREENS.FETCH_LYRICS} />
         <MenuOption text="Sobre" redirectTo={SCREENS.ABOUT} />
       </MainMenu>
     </Screen>
