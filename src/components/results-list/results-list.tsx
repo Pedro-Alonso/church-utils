@@ -38,16 +38,8 @@ export const ResultsList = ({ data, clientAccessToken }: ResultsListProps): Reac
   };
 
   useEffect(() => {
-    const getLyrics = async (song: SongData) => {
-      const response = await request
-        .get(`http://api.genius.com${song.result.path}?access_token=${clientAccessToken}`)
-        .then((response: any) => {
-          setLyrics(response.data.response.song.lyrics);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    };
+    const getLyrics = async (song: SongData) => {};
+
     if (currentSong) {
       console.log(currentSong.result);
       getLyrics(currentSong);
@@ -70,7 +62,7 @@ export const ResultsList = ({ data, clientAccessToken }: ResultsListProps): Reac
       <LyricsPreview
         title={currentSong?.result.title || ''}
         artist={currentSong?.result.primary_artist.name || ''}
-        lyrics={lyrics}
+        clientAccessToken={clientAccessToken}
       />
     </Wrapper>
   );
