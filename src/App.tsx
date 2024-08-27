@@ -10,6 +10,7 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route path={SCREENS.ROOT} Component={Home} />
         <Route path={SCREENS.HOME} Component={Home} />
         <Route path='*' Component={NotFound} />
         <Route path={SCREENS.FORMAT_LYRICS} Component={FormatLyrics} />

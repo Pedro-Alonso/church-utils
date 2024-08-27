@@ -1,5 +1,6 @@
 export enum SCREENS {
-  HOME = "/",
+  ROOT = "/",
+  HOME = "/home",
   ABOUT = "/about",
   CONTACT = "/contact",
   FORMAT_LYRICS = "/format-lyrics",

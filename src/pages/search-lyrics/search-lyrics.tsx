@@ -1,52 +1,25 @@
-import { ReactElement, useEffect, useState } from 'react';
-import { request } from '../../hooks/axios.config';
-import { Screen } from '../../components/screen/screen';
-import { Subtitle, Title, Wrapper } from './search-lyrics.styles';
-import { TextInput, TextInputVariants } from '../../components/text-input/text-input';
-import { ResultsList } from '../../components/results-list/results-list';
+import { ReactElement } from 'react';
+import { useSearchLyrics } from './search-lyrics.hook';
+import { SearchLyricsLayout } from './search-lyrics.layout';
+
+export interface ISearchLyrics {
+  searchTerm: string;
+  handleSearchTerm: (text: string) => void;
+  clientAccessToken: string;
+  handleAccessToken: (text: string) => void;
+  results: any[];
+}
 
 export const SearchLyrics = (): ReactElement => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [clientAccessToken, setClientAccessToken] = useState('');
-  const [results, setResults] = useState<any[]>([]);
-
-  const fetchUrl = `http://api.genius.com/search?q=${searchTerm}&access_token=${clientAccessToken}`;
-
-  useEffect(() => {
-    if (searchTerm) {
-      request
-        .get(fetchUrl)
-        .then((response) => {
-          setResults(response.data.response.hits);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-  }, [fetchUrl, searchTerm]);
+  const { searchTerm, handleSearchTerm, clientAccessToken, handleAccessToken, results } = useSearchLyrics();
 
   return (
-    <Screen>
-      <Wrapper>
-        <Title>Pesquisar letra</Title>
-        <Subtitle>
-          Termo de pesquisa:
-          <TextInput
-            value={searchTerm}
-            onChange={(text) => setSearchTerm(text)}
-            variant={TextInputVariants.INPUT}
-          />
-          Chave de acesso:
-          <TextInput
-            value={clientAccessToken}
-            onChange={(text) => setClientAccessToken(text)}
-            variant={TextInputVariants.INPUT}
-          />
-        </Subtitle>
-        <Subtitle>Client access token: {clientAccessToken}</Subtitle>
-
-        <ResultsList data={results} clientAccessToken={clientAccessToken} />
-      </Wrapper>
-    </Screen>
+    <SearchLyricsLayout
+      searchTerm={searchTerm}
+      handleSearchTerm={handleSearchTerm}
+      clientAccessToken={clientAccessToken}
+      handleAccessToken={handleAccessToken}
+      results={results}
+    />
   );
 };
