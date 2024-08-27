@@ -12,7 +12,6 @@ import { LyricsPreview } from '../lyrics-preview/lyrics-preview';
 import { SongData } from '../../pages/search-lyrics/search-lyrics';
 
 interface IResultsList {
-  useGetLyricsHook: () => void;
   data: SongData[];
   lyrics?: string;
   getSongData: (songData: SongData) => void;
@@ -21,7 +20,6 @@ interface IResultsList {
 
 export const ResultsList = ({
   data,
-  useGetLyricsHook,
   getSongData,
   songData,
   lyrics,
@@ -31,7 +29,13 @@ export const ResultsList = ({
       <ResultsWrapper>
         <h2>Top results</h2>
         {data.map((result, index) => (
-          <ResultWrapper key={result.result.title} index={index} onMouseEnter={() => getSongData(result)}>
+          <ResultWrapper
+            key={result.result.title}
+            index={index}
+            onMouseEnter={() => {
+              getSongData(result);
+            }}
+          >
             <SongTitle>{result.result.title}</SongTitle>
             <SongFullTitle>{result.result.full_title}</SongFullTitle>
             <ArtistName>{result.result.primary_artist.name}</ArtistName>
@@ -42,7 +46,6 @@ export const ResultsList = ({
       <LyricsPreview
         title={songData?.result.title || ''}
         artist={songData?.result.primary_artist.name || ''}
-        useGetLyricsHook={useGetLyricsHook}
         lyrics={lyrics}
       />
     </Wrapper>

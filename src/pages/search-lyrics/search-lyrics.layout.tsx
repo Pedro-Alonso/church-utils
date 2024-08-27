@@ -5,7 +5,6 @@ import { Screen } from '../../components/screen/screen';
 import { ISearchLyrics } from './search-lyrics';
 
 export const SearchLyricsLayout = ({
-  useGetLyricsHook,
   lyrics,
   searchTerm,
   handleSearchTerm,
@@ -37,7 +36,6 @@ export const SearchLyricsLayout = ({
 
         <ResultsList
           data={results}
-          useGetLyricsHook={useGetLyricsHook}
           getSongData={getSongData}
           songData={songData}
           lyrics={lyrics}

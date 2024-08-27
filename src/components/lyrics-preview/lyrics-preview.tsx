@@ -1,13 +1,13 @@
 import { ReactElement } from 'react';
+import { Artist, Container, Lyrics, Title } from './lyrics-preview.styles';
 
 interface ILyricsPreview {
-  useGetLyricsHook: () => void;
   title: string;
   artist: string;
   lyrics?: string;
 }
 
-export const LyricsPreview = ({ useGetLyricsHook, title, artist, lyrics }: ILyricsPreview): ReactElement => {
+export const LyricsPreview = ({ title, artist, lyrics }: ILyricsPreview): ReactElement => {
   return (
     <Container>
       <Title>{title}</Title>

@@ -15,7 +15,6 @@ export interface SongData {
   };
 }
 export interface ISearchLyrics {
-  useGetLyricsHook: () => void;
   lyrics?: string;
   searchTerm: string;
   handleSearchTerm: (text: string) => void;
@@ -28,7 +27,6 @@ export interface ISearchLyrics {
 
 export const SearchLyrics = (): ReactElement => {
   const {
-    useGetLyricsHook,
     lyrics,
     searchTerm,
     handleSearchTerm,
@@ -41,7 +39,6 @@ export const SearchLyrics = (): ReactElement => {
 
   return (
     <SearchLyricsLayout
-      useGetLyricsHook={useGetLyricsHook}
       lyrics={lyrics}
       searchTerm={searchTerm}
       handleSearchTerm={handleSearchTerm}

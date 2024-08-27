@@ -10,30 +10,6 @@ export const useSearchLyrics = (): ISearchLyrics => {
   const [songLyrics, setSongLyrics] = useState<string>('');
   const [currentSong, setCurrentSong] = useState<SongData | null>(null);
 
-  const getLyrics = async () => {
-    const title = currentSong?.result.title || '';
-    const artist = currentSong?.result.primary_artist.name || '';
-    console.log('Getting lyrics for:', title, artist);
-
-    try {
-      const sanitizedTitle = sanitizeParam(title);
-      const sanitizedArtist = sanitizeParam(artist);
-      const response = await request.get(
-        `http://127.0.0.1:5000/get-lyrics/${sanitizedArtist}/${sanitizedTitle}`,
-        {
-          headers: {
-            'Client-access-token': clientAccessToken,
-          },
-        }
-      );
-      const formattedLyrics = response.data.lyrics;
-      setSongLyrics(formattedLyrics);
-      console.log('Lyrics:', formattedLyrics);
-    } catch (error) {
-      console.error('Error running Python script:', error);
-    }
-  };
-
   const getResultsPreviewUrl = `http://api.genius.com/search?q=${searchTerm}&access_token=${clientAccessToken}`;
 
   useEffect(() => {
@@ -49,8 +25,36 @@ export const useSearchLyrics = (): ISearchLyrics => {
     } else setResults([]);
   }, [getResultsPreviewUrl, searchTerm]);
 
+  useEffect(() => {
+    const getLyrics = async () => {
+      const title = currentSong?.result.title || '';
+      const artist = currentSong?.result.primary_artist.name || '';
+      console.log('Getting lyrics for:', title, artist);
+
+      try {
+        const sanitizedTitle = sanitizeParam(title);
+        const sanitizedArtist = sanitizeParam(artist);
+        const response = await request.get(
+          `http://127.0.0.1:5000/get-lyrics/${sanitizedArtist}/${sanitizedTitle}`,
+          {
+            headers: {
+              'Client-access-token': clientAccessToken,
+            },
+          }
+        );
+        const formattedLyrics = response.data.lyrics;
+        setSongLyrics(formattedLyrics);
+        console.log('Lyrics:', formattedLyrics);
+      } catch (error) {
+        console.error('Error running Python script:', error);
+      }
+    };
+    if (currentSong) {
+      getLyrics();
+    }
+  }, [currentSong, clientAccessToken]);
+
   return {
-    useGetLyricsHook: getLyrics,
     lyrics: songLyrics,
     searchTerm,
     handleSearchTerm: setSearchTerm,
