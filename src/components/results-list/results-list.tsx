@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement } from 'react';
 import {
   ArtistName,
   ResultsWrapper,
@@ -9,49 +9,29 @@ import {
   Wrapper,
 } from './results-list.styles';
 import { LyricsPreview } from '../lyrics-preview/lyrics-preview';
-import { request } from '../../hooks/axios.config';
+import { SongData } from '../../pages/search-lyrics/search-lyrics';
 
-interface SongData {
-  result: {
-    id: number;
-    title: string;
-    full_title: string;
-    path: string;
-    primary_artist: {
-      name: string;
-    };
-    header_image_thumbnail_url: string;
-  };
-}
-
-interface ResultsListProps {
+interface IResultsList {
+  useGetLyricsHook: () => void;
   data: SongData[];
-  clientAccessToken: string;
+  lyrics?: string;
+  getSongData: (songData: SongData) => void;
+  songData: SongData | null;
 }
 
-export const ResultsList = ({ data, clientAccessToken }: ResultsListProps): ReactElement => {
-  const [currentSong, setCurrentSong] = useState<SongData | null>(null);
-  const [lyrics, setLyrics] = useState<string>('');
-
-  const handleSongHover = (song: SongData) => {
-    setCurrentSong(song);
-  };
-
-  useEffect(() => {
-    const getLyrics = async (song: SongData) => {};
-
-    if (currentSong) {
-      console.log(currentSong.result);
-      getLyrics(currentSong);
-    }
-  }, [clientAccessToken, currentSong]);
-
+export const ResultsList = ({
+  data,
+  useGetLyricsHook,
+  getSongData,
+  songData,
+  lyrics,
+}: IResultsList): ReactElement => {
   return (
     <Wrapper>
       <ResultsWrapper>
         <h2>Top results</h2>
         {data.map((result, index) => (
-          <ResultWrapper key={result.result.title} index={index} onMouseEnter={() => handleSongHover(result)}>
+          <ResultWrapper key={result.result.title} index={index} onMouseEnter={() => getSongData(result)}>
             <SongTitle>{result.result.title}</SongTitle>
             <SongFullTitle>{result.result.full_title}</SongFullTitle>
             <ArtistName>{result.result.primary_artist.name}</ArtistName>
@@ -60,9 +40,10 @@ export const ResultsList = ({ data, clientAccessToken }: ResultsListProps): Reac
         ))}
       </ResultsWrapper>
       <LyricsPreview
-        title={currentSong?.result.title || ''}
-        artist={currentSong?.result.primary_artist.name || ''}
-        clientAccessToken={clientAccessToken}
+        title={songData?.result.title || ''}
+        artist={songData?.result.primary_artist.name || ''}
+        useGetLyricsHook={useGetLyricsHook}
+        lyrics={lyrics}
       />
     </Wrapper>
   );

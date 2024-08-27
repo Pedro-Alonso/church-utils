@@ -1,17 +1,14 @@
-import { ReactElement } from "react";
-import { Container, Paragraph } from "./menu-option.styles";
-import { SCREENS } from "../../assets/types";
-import { useNavigate } from "react-router-dom";
+import { ReactElement } from 'react';
+import { Container, Paragraph } from './menu-option.styles';
+import { SCREENS } from '../../assets/types';
+import { useNavigate } from 'react-router-dom';
 
-interface MenuOptionProps {
+interface IMenuOption {
   text: string;
   redirectTo: SCREENS;
 }
 
-export const MenuOption = ({
-  text,
-  redirectTo,
-}: MenuOptionProps): ReactElement => {
+export const MenuOption = ({ text, redirectTo }: IMenuOption): ReactElement => {
   const navigate = useNavigate();
 
   const onClick = () => {

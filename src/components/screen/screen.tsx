@@ -1,11 +1,11 @@
-import { ReactElement, ReactNode } from "react";
-import { Container } from "./screen.styles";
+import { ReactElement, ReactNode } from 'react';
+import { Container } from './screen.styles';
 
-interface ScreenProps {
+interface IScreen {
   children: ReactNode;
 }
 
-export const Screen = ({ children }: ScreenProps): ReactElement => {
+export const Screen = ({ children }: IScreen): ReactElement => {
   const renderChildren = () => {
     return children;
   };

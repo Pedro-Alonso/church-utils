@@ -5,11 +5,15 @@ import { Screen } from '../../components/screen/screen';
 import { ISearchLyrics } from './search-lyrics';
 
 export const SearchLyricsLayout = ({
+  useGetLyricsHook,
+  lyrics,
   searchTerm,
   handleSearchTerm,
   clientAccessToken,
   handleAccessToken,
   results,
+  getSongData,
+  songData,
 }: ISearchLyrics) => {
   return (
     <Screen>
@@ -31,7 +35,13 @@ export const SearchLyricsLayout = ({
         </Subtitle>
         <Subtitle>Client access token: {clientAccessToken}</Subtitle>
 
-        <ResultsList data={results} clientAccessToken={clientAccessToken} />
+        <ResultsList
+          data={results}
+          useGetLyricsHook={useGetLyricsHook}
+          getSongData={getSongData}
+          songData={songData}
+          lyrics={lyrics}
+        />
       </Wrapper>
     </Screen>
   );

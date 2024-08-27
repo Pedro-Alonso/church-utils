@@ -6,13 +6,13 @@ export enum TextInputVariants {
   INPUT = 'input',
 }
 
-interface TextInputProps {
+interface ITextInput {
   value: string;
   onChange: (text: string) => void;
   variant: TextInputVariants;
 }
 
-export const TextInput = ({ value, onChange, variant }: TextInputProps): ReactElement => {
+export const TextInput = ({ value, onChange, variant }: ITextInput): ReactElement => {
   return (
     <Container>
       {variant === TextInputVariants.TEXTAREA && (

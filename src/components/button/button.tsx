@@ -1,17 +1,21 @@
-import { ReactElement } from "react";
-import { Container, Paragraph } from "./button.styles";
-import { ButtonVariants } from "./types";
+import { ReactElement } from 'react';
+import { Container, Paragraph } from './button.styles';
 
-interface ButtonProps {
-  type: ButtonVariants;
+interface IButton {
+  variant: ButtonVariants;
   text: string;
   onClick: () => void;
 }
 
-export const Button = ({ type, text, onClick }: ButtonProps): ReactElement => {
+export enum ButtonVariants {
+  PRIMARY = 'primary',
+  SECONDARY = 'secondary',
+}
+
+export const Button = ({ variant, text, onClick }: IButton): ReactElement => {
   return (
-    <Container type={type} onClick={onClick}>
-      <Paragraph type={type}>{text}</Paragraph>
+    <Container variant={variant} onClick={onClick}>
+      <Paragraph variant={variant}>{text}</Paragraph>
     </Container>
   );
 };
