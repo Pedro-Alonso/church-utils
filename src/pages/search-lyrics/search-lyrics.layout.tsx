@@ -6,6 +6,7 @@ import { ISearchLyrics } from './search-lyrics';
 
 export const SearchLyricsLayout = ({
   lyrics,
+  isLoading,
   searchTerm,
   handleSearchTerm,
   clientAccessToken,
@@ -39,6 +40,7 @@ export const SearchLyricsLayout = ({
           getSongData={getSongData}
           songData={songData}
           lyrics={lyrics}
+          isLoading={isLoading}
         />
       </Wrapper>
     </Screen>

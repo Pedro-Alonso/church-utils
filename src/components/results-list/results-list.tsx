@@ -16,6 +16,7 @@ interface IResultsList {
   lyrics?: string;
   getSongData: (songData: SongData) => void;
   songData: SongData | null;
+  isLoading?: boolean;
 }
 
 export const ResultsList = ({
@@ -23,6 +24,7 @@ export const ResultsList = ({
   getSongData,
   songData,
   lyrics,
+  isLoading,
 }: IResultsList): ReactElement => {
   return (
     <Wrapper>
@@ -47,6 +49,7 @@ export const ResultsList = ({
         title={songData?.result.title || ''}
         artist={songData?.result.primary_artist.name || ''}
         lyrics={lyrics}
+        isLoading={isLoading}
       />
     </Wrapper>
   );

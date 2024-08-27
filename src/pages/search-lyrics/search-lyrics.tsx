@@ -16,6 +16,7 @@ export interface SongData {
 }
 export interface ISearchLyrics {
   lyrics?: string;
+  isLoading: boolean;
   searchTerm: string;
   handleSearchTerm: (text: string) => void;
   clientAccessToken: string;
@@ -28,6 +29,7 @@ export interface ISearchLyrics {
 export const SearchLyrics = (): ReactElement => {
   const {
     lyrics,
+    isLoading,
     searchTerm,
     handleSearchTerm,
     clientAccessToken,
@@ -40,6 +42,7 @@ export const SearchLyrics = (): ReactElement => {
   return (
     <SearchLyricsLayout
       lyrics={lyrics}
+      isLoading={isLoading}
       searchTerm={searchTerm}
       handleSearchTerm={handleSearchTerm}
       clientAccessToken={clientAccessToken}

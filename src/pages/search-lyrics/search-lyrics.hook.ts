@@ -9,6 +9,7 @@ export const useSearchLyrics = (): ISearchLyrics => {
   const [results, setResults] = useState<any[]>([]);
   const [songLyrics, setSongLyrics] = useState<string>('');
   const [currentSong, setCurrentSong] = useState<SongData | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getResultsPreviewUrl = `http://api.genius.com/search?q=${searchTerm}&access_token=${clientAccessToken}`;
 
@@ -31,6 +32,7 @@ export const useSearchLyrics = (): ISearchLyrics => {
       const artist = currentSong?.result.primary_artist.name || '';
       console.log('Getting lyrics for:', title, artist);
 
+      setIsLoading(true);
       try {
         const sanitizedTitle = sanitizeParam(title);
         const sanitizedArtist = sanitizeParam(artist);
@@ -48,6 +50,7 @@ export const useSearchLyrics = (): ISearchLyrics => {
       } catch (error) {
         console.error('Error running Python script:', error);
       }
+      setIsLoading(false);
     };
     if (currentSong) {
       getLyrics();
@@ -56,6 +59,7 @@ export const useSearchLyrics = (): ISearchLyrics => {
 
   return {
     lyrics: songLyrics,
+    isLoading,
     searchTerm,
     handleSearchTerm: setSearchTerm,
     clientAccessToken,
