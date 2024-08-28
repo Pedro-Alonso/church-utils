@@ -11,15 +11,7 @@ export interface IFormatLyrics {
 }
 
 export const FormatLyrics = (): ReactElement => {
-  const { lyrics, hasCopied, handleLyricsChange, onSubmit, handleGoBack } = useFormatLyrics();
+  const props = useFormatLyrics();
 
-  return (
-    <FormatLyricsLayout
-      handleGoBack={handleGoBack}
-      handleLyricsChange={handleLyricsChange}
-      hasCopied={hasCopied}
-      lyrics={lyrics}
-      onSubmit={onSubmit}
-    />
-  );
+  return <FormatLyricsLayout {...props} />;
 };

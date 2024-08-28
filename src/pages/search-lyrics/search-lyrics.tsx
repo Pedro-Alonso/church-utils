@@ -27,29 +27,7 @@ export interface ISearchLyrics {
 }
 
 export const SearchLyrics = (): ReactElement => {
-  const {
-    lyrics,
-    isLoading,
-    searchTerm,
-    handleSearchTerm,
-    clientAccessToken,
-    handleAccessToken,
-    results,
-    getSongData,
-    songData,
-  } = useSearchLyrics();
+  const props = useSearchLyrics();
 
-  return (
-    <SearchLyricsLayout
-      lyrics={lyrics}
-      isLoading={isLoading}
-      searchTerm={searchTerm}
-      handleSearchTerm={handleSearchTerm}
-      clientAccessToken={clientAccessToken}
-      handleAccessToken={handleAccessToken}
-      results={results}
-      getSongData={getSongData}
-      songData={songData}
-    />
-  );
+  return <SearchLyricsLayout {...props} />;
 };
