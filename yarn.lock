@@ -1902,18 +1902,6 @@
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
 
-"@tanstack/query-core@5.52.2":
-  version "5.52.2"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.52.2.tgz#a023864a892fda9858b724d667eb19cd84ce054a"
-  integrity sha512-9vvbFecK4A0nDnrc/ks41e3UHONF1DAnGz8Tgbxkl59QcvKWmc0ewhYuIKRh8NC4ja5LTHT9EH16KHbn2AIYWA==
-
-"@tanstack/react-query@^5.52.2":
-  version "5.52.2"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.52.2.tgz#3fffbc86351edcaeec335bc8958bcab4204bd169"
-  integrity sha512-d4OwmobpP+6+SvuAxW1RzAY95Pv87Gu+0GjtErzFOUXo+n0FGcwxKvzhswCsXKxsgnAr3bU2eJ2u+GXQAutkCQ==
-  dependencies:
-    "@tanstack/query-core" "5.52.2"
-
 "@testing-library/dom@^8.5.0":
   version "8.20.1"
   resolved "https://registry.npmjs.org/@testing-library/dom/-/dom-8.20.1.tgz"
@@ -3421,7 +3409,7 @@ chrome-trace-event@^1.0.2:
     "@types/react" "^18.0.0"
     "@types/react-dom" "^18.0.0"
     axios "^1.7.3"
-    church-utils "file:../../../../AppData/Local/Yarn/Cache/v6/npm-church-utils-0.1.0-b33be64a-efcc-4248-96b6-fdcd62058d7b-1724794397943/node_modules/church-utils"
+    church-utils "file:../../../../AppData/Local/Yarn/Cache/v6/npm-church-utils-0.1.0-0efa22cf-b29a-4afb-9216-d84543d6a76b-1724847747510/node_modules/church-utils"
     gitmoji-cli "^9.4.0"
     react "^18.3.1"
     react-dom "^18.3.1"
